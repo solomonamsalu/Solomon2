@@ -1,0 +1,49 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signin</title>
+    <link rel="stylesheet" href="{% static 'signin/style/base.css' %}">
+    <link rel="stylesheet" href="{% static 'signin/style/all_meetups.css' %}">
+</head>
+<body>
+    <header id="main-header">
+        <nav>
+            <a href="/signin" id="main-logo">djangosignin</a>
+            <h1>signin page is coming up!</h1>
+            <p>find the one that best suits your needs</p>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Upcoming meetups</h2>
+            <ol>
+                {% for meetup_item in signin %}
+                <li class="meetup-item">
+                    <article>
+                        <div class="meetup-summary">
+                            <div class="meetup-image">
+                            <img src="{{meetup_item.image.url}}" alt="{{title}}" >
+                            </div>
+                            <div class="meetup-details">
+                                <h1>{{ meetup_item.id }}</h1>
+                                <address>{{'Gond'}}</address>    
+                            </div>
+                        </div>
+                        <footer>
+                        <div class="meetup-actions">
+                            <a href="{% url 'detail_meetup' meetup_item.slug %}" class="btn">More detail</a>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    
+                  
+                </li>
+            </ol>
+        </section>
+    </main>
+</body>
+</html>
